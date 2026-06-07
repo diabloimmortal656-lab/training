@@ -27,9 +27,6 @@ namespace perfume.Vews
         public Catalog()
         {
             InitializeComponent();
-            var window = Application.Current.MainWindow;
-            window.Width = 1200;
-            window.Height = 800;
 
             Provider provider = new Provider
             {
@@ -67,36 +64,32 @@ namespace perfume.Vews
             {
                 string text = tbSearch.Text.ToLower();
 
-                lbTovar.ItemsSource = search = search.Where(s =>
-                (s.NameTovar.TovarName ?? "").ToLower().Contains(text) ||
-                (s.Category.NameCategory ?? "").ToLower().Contains(text) ||
-                (s.Manufacture.NameManufacture ?? "").ToLower().Contains(text) ||
-                (s.Description ?? "").ToLower().Contains(text)
+                search = search.Where(s =>
+                (s.NameTovar.TovarName).ToLower().Contains(text) ||
+                (s.Category.NameCategory).ToLower().Contains(text) ||
+                (s.Manufacture.NameManufacture).ToLower().Contains(text) ||
+                (s.Description).ToLower().Contains(text)
                 );
             }
 
             if (cbProvider.SelectedIndex > 0)
             {
-                lbTovar.ItemsSource = search = search.Where(p => p.IDProvider == cbProvider.SelectedIndex);
+                search = search.Where(p => p.IDProvider == cbProvider.SelectedIndex);
             }
 
             if (rbUp.IsChecked == true)
             {
-                lbTovar.ItemsSource = search = search.OrderBy(x => x.Count).ToList();
+                search = search.OrderBy(x => x.Count).ToList();
             }
             if (rbDown.IsChecked == true)
             {
-                lbTovar.ItemsSource = search = search.OrderByDescending(x => x.Count).ToList();
+                search = search.OrderByDescending(x => x.Count).ToList();
             }
+            lbTovar.ItemsSource = search;
         }
 
         private void btnExit_Click(object sender, RoutedEventArgs e)
         {
-            var window = Application.Current.MainWindow;
-
-            window.Width = 800;
-            window.Height = 450;
-
             NavigationService.GoBack();
         }
 
@@ -107,5 +100,16 @@ namespace perfume.Vews
         private void rbUp_Checked(object sender, RoutedEventArgs e) => main();
 
         private void rbDown_Checked(object sender, RoutedEventArgs e) => main();
+
+        private void btnAddTovar_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new AddTovar(1, null));
+        }
+
+        private void lbTovar_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            Model.Tovar tovar = (Model.Tovar)lbTovar.SelectedItem; 
+            NavigationService.Navigate(new AddTovar(2, tovar));
+        }
     }
 }

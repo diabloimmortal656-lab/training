@@ -24,3 +24,5 @@ C:\Users\1\source\repos\perfume\perfume\obj\Debug\perfume.csproj.CoreCompileInpu
 C:\Users\1\source\repos\perfume\perfume\obj\Debug\perfume.csproj.Up2Date
 C:\Users\1\source\repos\perfume\perfume\obj\Debug\perfume.exe
 C:\Users\1\source\repos\perfume\perfume\obj\Debug\perfume.pdb
+C:\Users\1\source\repos\perfume\perfume\obj\Debug\Vews\AddTovar.g.cs
+C:\Users\1\source\repos\perfume\perfume\obj\Debug\Vews\AddTovar.baml

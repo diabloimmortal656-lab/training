@@ -10,7 +10,7 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="50*"/>
+            <RowDefinition Height="50"/>
             <RowDefinition Height="200*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
@@ -26,9 +26,9 @@
         </Grid>
         <UniformGrid Grid.Row="1">
             <TextBlock Text="Логин" Style="{StaticResource ResourceKey=tbTitle}"/>
-            <TextBox Name="tbLogin" Text="o@outlook.com" Style="{StaticResource ResourceKey=tbMain}"/>
+            <TextBox Name="tbLogin" Text="o@outlook.com" Style="{StaticResource tbMain}"/>
             <TextBlock Text="Пароль" Style="{StaticResource ResourceKey=tbTitle}"/>
-            <TextBox Name="tbPassword" Text="2L6KZG" Style="{StaticResource ResourceKey=tbMain}"/>
+            <TextBox Name="tbPassword" Text="2L6KZG" Style="{StaticResource tbMain}"/>
         </UniformGrid>
         <Grid Grid.Row="2" Visibility="Visible" Background="#FFFACD">
             <Grid.ColumnDefinitions>

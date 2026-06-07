@@ -10,7 +10,7 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="50*"/>
+            <RowDefinition Height="50"/>
             <RowDefinition Height="200*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
@@ -28,16 +28,10 @@
         </Grid>
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
-            <ListBox Name="lbTovar">
-                <ListBox.ItemContainerStyle>
-                    <Style TargetType="ListBoxItem">
-                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
-                        <Setter Property="VerticalContentAlignment" Value="Stretch"/>
-                    </Style>
-                </ListBox.ItemContainerStyle>
+            <ListBox Name="lbTovar" MouseDoubleClick="lbTovar_MouseDoubleClick" HorizontalContentAlignment="Stretch">
                 <ListBox.ItemTemplate>
                     <DataTemplate>
                         <Border BorderBrush="Black" BorderThickness="1">
@@ -86,9 +80,9 @@
                                 <Border  Grid.Column="2" Margin="5" BorderBrush="Black" BorderThickness="1" >
                                     <StackPanel Orientation="Vertical" Margin="0,70,0,0">
                                         <TextBlock TextAlignment="Center" Style="{StaticResource tbText}">
-                                <Run Text="Действующая"/>
-                                <LineBreak/>
-                                <Run Text="скидка:"/>
+                                        <Run Text="Действующая"/>
+                                        <LineBreak/>
+                                        <Run Text="скидка:"/>
                                         </TextBlock>
                                         <TextBlock Text="{Binding Path=Discount}" Margin="0,0,0,100" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource tbText}"/>
                                     </StackPanel>
@@ -98,22 +92,20 @@
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
-            <Grid Name="GridSearch" Visibility="Visible" Grid.Column="1">
-                <Border BorderBrush="Black" BorderThickness="1">
-                    <StackPanel Orientation="Vertical">
-                        <TextBlock Margin="10" Text="Поиск" Style="{StaticResource tbTitle}"/>
-                        <TextBox Name="tbSearch" Style="{StaticResource tbMain}" Margin="10,0,10,0" TextChanged="tbSearch_TextChanged"/>
-                        <TextBlock FontSize="16" Text="Фильтрация по поставщикам:" Style="{StaticResource tbText}" Margin="10,5,10,0"/>
-                        <ComboBox Name="cbProvider"
+            <Border Name="GridSearch" Visibility="Collapsed" Grid.Column="1" BorderBrush="Black" BorderThickness="1">
+                <StackPanel Orientation="Vertical">
+                    <TextBlock Margin="10" Text="Поиск" Style="{StaticResource tbTitle}"/>
+                    <TextBox Name="tbSearch" Style="{StaticResource tbMain}" Margin="10,0,10,0" TextChanged="tbSearch_TextChanged"/>
+                    <TextBlock FontSize="16" Text="Фильтрация по поставщикам:" Style="{StaticResource tbText}" Margin="10,5,10,0"/>
+                    <ComboBox Name="cbProvider"
                                   SelectedIndex="0"
                                   SelectedValuePath="IDProvider"
                                   DisplayMemberPath="NameProvider" Style="{StaticResource cbMain}" Margin="10,5,10,0" SelectionChanged="cbProvider_SelectionChanged"/>
-                        <TextBlock FontSize="16" Text="Сортировка по количеству на складе:" Style="{StaticResource tbText}" Margin="10,5,10,0"/>
-                        <RadioButton Name="rbUp" Content="По возрастанию" GroupName="Sort" Margin="10,5,10,0" Style="{StaticResource rbMain}" Checked="rbUp_Checked"/>
-                        <RadioButton Name="rbDown" Content="По убыванию" GroupName="Sort" Margin="10,5,10,0" Style="{StaticResource rbMain}" Checked="rbDown_Checked"/>
-                    </StackPanel>
-                </Border>
-            </Grid>
+                    <TextBlock FontSize="16" Text="Сортировка по количеству на складе:" Style="{StaticResource tbText}" Margin="10,5,10,0"/>
+                    <RadioButton Name="rbUp" Content="По возрастанию" GroupName="Sort" Margin="10,5,10,0" Style="{StaticResource rbMain}" Checked="rbUp_Checked"/>
+                    <RadioButton Name="rbDown" Content="По убыванию" GroupName="Sort" Margin="10,5,10,0" Style="{StaticResource rbMain}" Checked="rbDown_Checked"/>
+                </StackPanel>
+            </Border>
         </Grid>
         <Grid Name="footter"  Grid.Row="2" Visibility="Collapsed" Background="#FFFACD">
             <Grid.ColumnDefinitions>
@@ -121,7 +113,7 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
-            <Button x:Name="btnAddTovar" Content="Добавить товар" />
+            <Button x:Name="btnAddTovar" Content="Добавить товар" Click="btnAddTovar_Click" />
             <Button Grid.Column="1" x:Name="btnDelTovar" Content="Удалить товар" />
             <Button Grid.Column="2" x:Name="btnOrder" Content="Заказы" />
         </Grid>

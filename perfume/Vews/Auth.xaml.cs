@@ -28,10 +28,11 @@ namespace perfume.Vews
             try
             {
                 App.DBCon = new DBCon();
+                MessageBox.Show("Cоединения с БД успешно", "Подключение", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             catch (Exception ex) 
             {
-                MessageBox.Show(ex.Message, "Ошибка соединения с БД");
+                MessageBox.Show(ex.Message, "Ошибка соединения с БД",MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -43,7 +44,7 @@ namespace perfume.Vews
         private void btnGuest_Click(object sender, RoutedEventArgs e)
         {
             App.CurrentUser = null;
-            MessageBox.Show("Добро пожаловать Гость");
+            MessageBox.Show("Добро пожаловать Гость", "Добро пожаловать", MessageBoxButton.OK, MessageBoxImage.Information);
             NavigationService.Navigate(new Catalog());
         }
 
@@ -55,8 +56,12 @@ namespace perfume.Vews
             if (App.CurrentUser != null)
             {
                 var user = App.CurrentUser;
-                MessageBox.Show($"Добро пожаловать {user.FullName} ваша роль {user.Role.NameRole}");
+                MessageBox.Show($"Добро пожаловать {user.FullName} ваша роль {user.Role.NameRole}", "Добро пожаловать", MessageBoxButton.OK, MessageBoxImage.Information);
                 NavigationService.Navigate(new Catalog());
+            }
+            else
+            {
+                MessageBox.Show("Неправильный логин или пароль");
             }
         }
     }

@@ -1,0 +1,57 @@
+﻿<Page x:Class="perfume.Vews.AddTovar"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:perfume.Vews"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800" Background="White"
+      Title="Page1">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="200*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid Background="#FFFACD">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="20*"/>
+                <ColumnDefinition Width="10*"/>
+            </Grid.ColumnDefinitions>
+            <Image Source="/image/icon.png"/>
+            <TextBlock Name="tbAddTovar" Grid.Column="1" Text="???" Style="{StaticResource ResourceKey=tbTitle}"/>
+            <Button Grid.Column="2" Name="btnExit" Content="Назад" Click="btnExit_Click"/>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <UniformGrid Columns="2" Rows="9">
+                <TextBlock Text="Артикул:" Style="{StaticResource tbTitle}" HorizontalAlignment="Left"/>
+                <TextBox x:Name="tbArt" Text="{Binding Path=Articule}" Style="{StaticResource tbMain}" Margin="0"/>
+                <TextBlock Text="Наименование:" Style="{StaticResource tbTitle}" HorizontalAlignment="Left"/>
+                <TextBox x:Name="tbNameTovar" Text="{Binding Path=NameTovar.TovarName}" Style="{StaticResource tbMain}" Margin="0"/>
+                <TextBlock Text="Категория:" Style="{StaticResource tbTitle}" HorizontalAlignment="Left"/>
+                <TextBox x:Name="tbNameCategory" Text="{Binding Path=Category.NameCategory}" Style="{StaticResource tbMain}" Margin="0"/>
+                <TextBlock Text="Категория:" Style="{StaticResource tbTitle}" HorizontalAlignment="Left"/>
+                <ComboBox x:Name="cbNameCategory" SelectedIndex="0" SelectedValuePath="IDNameCategory" DisplayMemberPath="NameCategory" Style="{StaticResource cbMain}"/>
+                <TextBlock Text="Описание:" Style="{StaticResource tbTitle}" HorizontalAlignment="Left"/>
+                <TextBox x:Name="tbDescription" Text="{Binding Path=Description}" Style="{StaticResource tbMain}" Margin="0" />
+                <TextBlock Text="Категория:" Style="{StaticResource tbTitle}" HorizontalAlignment="Left"/>
+                <ComboBox x:Name="cbProvider" SelectedIndex="0" SelectedValuePath="IDNameProvider" DisplayMemberPath="NameProvider" Style="{StaticResource cbMain}" />
+                <TextBlock Text="Цена:" Style="{StaticResource tbTitle}" HorizontalAlignment="Left"/>
+                <TextBox x:Name="tbPrice" Text="{Binding Path=Price}" Style="{StaticResource tbMain}" Margin="0"/>
+                <TextBlock Text="Единица измерения:" Style="{StaticResource tbTitle}" HorizontalAlignment="Left" />
+                <TextBox x:Name="tbUnit" Text="{Binding Path=Unit.NameUnit}" Style="{StaticResource tbMain}" Margin="0"/>
+                <TextBlock Text="Кол-во на складе:" Style="{StaticResource tbTitle}" HorizontalAlignment="Left"/>
+                <TextBox x:Name="tbCount" Text="{Binding Path=Count}" Style="{StaticResource tbMain}" Margin="0"/>
+            </UniformGrid>
+        </Grid>
+        <Grid Grid.Row="2" Visibility="Visible" Background="#FFFACD">
+            <Button x:Name="btnGuest" Content="Сохранить" Click="btnGuest_Click"/>
+        </Grid>
+    </Grid>
+</Page>
